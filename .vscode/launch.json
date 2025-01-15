@@ -1,0 +1,13 @@
+{
+    "type": "node",
+    "request": "launch",
+    "name": "Run TypeScript",
+    "runtimeExecutable": "node",
+    "runtimeArgs": [
+      "--require",
+      "ts-node/register"
+    ],
+    "args": ["${workspaceFolder}/src/index.ts"], // Directly point to the TS file
+    "skipFiles": ["<node_internals>/**"]
+  }
+  
