@@ -8,8 +8,10 @@ export class Sender {
     // Function to send the XML and receive the response
     static async sendRequest(soapAction: string, xml: string): Promise<void> {
       const config = createHeaders(soapAction); // Dynamically create headers
-  
+         
       try {
+
+        
         console.log(this.soapEndpoint)
         console.log(xml)
         console.log(config)

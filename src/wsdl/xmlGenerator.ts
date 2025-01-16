@@ -53,6 +53,9 @@ export class XMLGenerator {
 </soapenv:Envelope>
       `.trim();
     }
+
+
+    
  
   //registerEventRequest
     static registerEventRequest(param: string): string{
