@@ -21,6 +21,8 @@ export class XMLGenerator {
       `.trim();
     }
   
+//ssjssjsjsjjsjsj
+
     // Function to generate another type of XML if needed
     static createChangeRequest(param: string): string {
       return `
@@ -54,8 +56,6 @@ export class XMLGenerator {
       `.trim();
     }
 
-
-    
  
   //registerEventRequest
     static registerEventRequest(param: string): string{
