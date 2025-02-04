@@ -16,6 +16,8 @@ exports.Sender = void 0;
 const axios_1 = __importDefault(require("axios"));
 const xmlGenerator_1 = require("./wsdl/xmlGenerator");
 const headerGenerator_1 = require("./wsdl/headerGenerator");
+const listener_1 = require("./wsdl/listener");
+const xmlParser_1 = require("./wsdl/xmlParser");
 class Sender {
     ; // Replace with actual SOAP endpoint
     // Function to send the XML and receive the response
@@ -29,6 +31,10 @@ class Sender {
                 const response = yield axios_1.default.post(this.soapEndpoint, xml, config);
                 console.log("Response received:");
                 console.log(response.data);
+                const parsedResponse = xmlParser_1.XMLParser.parseChangeResponse(response.data.toString());
+                if (parsedResponse) {
+                    console.log(parsedResponse);
+                }
             }
             catch (error) {
                 console.error("Error occurred while sending the request:", error);
@@ -38,10 +44,14 @@ class Sender {
 }
 exports.Sender = Sender;
 Sender.soapEndpoint = "http://192.168.0.25/axis2/services/BrueBoxService";
+const IP_ADDRESS = "192.168.0.1";
+const PORT = 55561;
+// Start the listener
+(0, listener_1.startListener)(IP_ADDRESS, PORT);
 (() => __awaiter(void 0, void 0, void 0, function* () {
     // Generate a GetStatusRequest XML
-    const xml = xmlGenerator_1.XMLGenerator.registerEventRequest("?");
+    const xml = xmlGenerator_1.XMLGenerator.createChangeRequest("?");
     // Send the request with a variable SOAPAction
-    yield Sender.sendRequest("RegisterEventOperation", xml);
+    yield Sender.sendRequest("ChangeOperation", xml);
 }))();
 //# sourceMappingURL=index.js.map

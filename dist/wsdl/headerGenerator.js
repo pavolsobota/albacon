@@ -17,4 +17,6 @@ function createHeaders(soapAction) {
 //"GetStatus"
 //"ChangeOperation"
 //"RegisterEventOperation"
+//"UnRegisterEventOperation"
+//"ChangeCancelOperation"
 //# sourceMappingURL=headerGenerator.js.map

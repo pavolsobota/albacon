@@ -20,7 +20,8 @@ class XMLGenerator {
         </soapenv:Envelope>
       `.trim();
     }
-    // Function to generate another type of XML if needed
+    //ssjssjsjsjjsjsj
+    // Function to generate ChangeRequest XML 
     static createChangeRequest(param) {
         return `
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bru="http://www.glory.co.jp/bruebox.xsd">
@@ -52,6 +53,25 @@ class XMLGenerator {
 </soapenv:Envelope>
       `.trim();
     }
+    //changeCancelRequest
+    static changeCancelRequest(param) {
+        return `
+      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bru="http://www.glory.co.jp/bruebox.xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bru:ChangeCancelRequest>
+         <!--Optional:-->
+         <bru:Id>?</bru:Id>
+         <bru:SeqNo>?</bru:SeqNo>
+         <!--Optional:-->
+         <bru:SessionID>?</bru:SessionID>
+         <!--Optional:-->
+         <Option bru:type="?"/>
+      </bru:ChangeCancelRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+`.trim();
+    }
     //registerEventRequest
     static registerEventRequest(param) {
         return `
@@ -82,6 +102,26 @@ class XMLGenerator {
    </soapenv:Body>
 </soapenv:Envelope>
         `.trim();
+    }
+    //UnRegisterEventRequest
+    static unRegisterEventRequest(param) {
+        return `
+      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bru="http://www.glory.co.jp/bruebox.xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bru:UnRegisterEventRequest>
+         <!--Optional:-->
+         <bru:Id>?</bru:Id>
+         <bru:SeqNo>?</bru:SeqNo>
+         <!--Optional:-->
+         <bru:SessionID>?</bru:SessionID>
+         <bru:Url>?</bru:Url>
+         <!--Optional:-->
+         <bru:Port>?</bru:Port>
+      </bru:UnRegisterEventRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+`.trim();
     }
 }
 exports.XMLGenerator = XMLGenerator;
